@@ -73,10 +73,11 @@ class CauchyProblem:
         table.field_names = ['x', *method_names]
 
         h = 1e-5
-        x, y0, end = 0, 0, 2.0
+        x, y0, end = 0, 0, 2.00318
         n = m.ceil((end - x) / h) + 1
 
         x_arr = [x + h * i for i in range(n)]
+
         y1 = self.picard(n, h, x, y0)
         y2 = self.euler(n, h, x, y0)
         y3 = self.runge_kutta(n, h, x, y0)
@@ -112,7 +113,7 @@ class CauchyProblem:
 
 def main():
     cauchy = CauchyProblem(lambda x, u: x ** 2 + u ** 2)
-    cauchy.solve_equation(print_table=True, show_graphics=False)
+    cauchy.solve_equation(print_table=True, show_graphics=True)
 
 
 if __name__ == '__main__':
